@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add User</title>
+</head>
+<body>
+  <h1>Add User</h1>
+  <form id="userForm">
+    <label>Name:</label><br />
+    <input type="text" id="name" required><br />
+
+    <label>Email:</label><br />
+    <input type="email" id="email" required><br /><br />
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <p id="response"></p>
+
+  <script>
+    document.getElementById('userForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+
+      const res = await fetch('http://localhost:3000/api/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, email })
+      });
+
+      const data = await res.json();
+      document.getElementById('response').innerText = data.message || 'User added!';
+    });
+  </script>
+</body>
+</html>
