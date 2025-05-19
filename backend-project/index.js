@@ -14,7 +14,7 @@ app.use("/api/salaries", require("./routes/salary"));
 
 // Default route
 app.get("/", (req, res) => {
-  res.send("✅ Employee Payroll Management System API is running...");
+  res.send("Employee Payroll Management System");
 });
 
 // Start server

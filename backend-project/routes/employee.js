@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require("../db");
 
 router.get("/", (req, res) => {
-  res.send("✅ Employees route is working!");
+  res.send("Employees route is working!");
 });
 
 router.post("/", (req, res) => {
@@ -38,7 +38,7 @@ router.post("/", (req, res) => {
 
   db.query(sql, values, (err, result) => {
     if (err) return res.status(500).json({ error: err.message });
-    res.status(201).json({ message: "✅ Employee added successfully" });
+    res.status(201).json({ message: "Employee added successfully" });
   });
 });
 
@@ -74,7 +74,7 @@ router.put("/:id", (req, res) => {
     [firstName, lastName, position, address, telephone, gender, hiredDate, departmentCode, req.params.id],
     (err, result) => {
       if (err) return res.status(500).json({ error: err.message });
-      res.json({ message: "✅ Employee updated successfully" });
+      res.json({ message: "Employee updated successfully" });
     }
   );
 });
@@ -82,7 +82,7 @@ router.put("/:id", (req, res) => {
 router.delete("/:id", (req, res) => {
   db.query("DELETE FROM employee WHERE employeeNumber = ?", [req.params.id], (err, result) => {
     if (err) return res.status(500).json({ error: err.message });
-    res.json({ message: "✅ Employee deleted successfully" });
+    res.json({ message: "Employee deleted successfully" });
   });
 });
 

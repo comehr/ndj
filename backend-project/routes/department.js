@@ -17,7 +17,7 @@ router.post("/", (req, res) => {
     [departmentCode, departmentName, grossSalary],
     (err, result) => {
       if (err) return res.status(500).json({ error: err.message });
-      res.status(201).json({ message: "✅ Department added successfully" });
+      res.status(201).json({ message: "Department added successfully" });
     }
   );
 });
